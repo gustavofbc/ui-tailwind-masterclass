@@ -1,6 +1,9 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { Sidebar } from '../components/Sidebar'
+import { Header } from '../components/Header'
+import { HeroPattern } from '@/components/HeroPattern'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +19,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} bg-zinc-900`}>
+        <Sidebar />
+
+        <div className='lg:ml-80 ml-0 relative h-screen'>
+          <Header />
+          <HeroPattern />
+
+          <div className='py-24 max-w-4xl px-8 mx-auto'>
+            {children}
+          </div>
+        </div>
+      </body>
     </html>
   )
 }
